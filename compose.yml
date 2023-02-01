@@ -1,0 +1,18 @@
+version: "3"
+services:
+  jupyter:
+    container_name: jup
+    build: 
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - 8888:8888
+    environment:
+      JUPYTER_TOKEN: "foo" # Access the lab with the query string: ?token=foo
+      SHELL: /bin/bash
+    volumes:
+      - ./books:/books
+
+volumes:
+  my_volume:
+    external: true
